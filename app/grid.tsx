@@ -36,7 +36,8 @@ async function Grid() {
             {/* TODO - make this dynamic based on JSON response*/}
             <h1>Resources</h1>
             <div className={styles.grid}>
-                {posts.map((post: {}) => {
+                {/* TODO - assign correct interface/type */}
+                {posts.map((post: any) => {
                     const postUrl = post.link;
                     const imgUrl =
                         post._embedded['wp:featuredmedia'][0].media_details
