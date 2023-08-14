@@ -1,0 +1,87 @@
+.content {
+    display: flex;
+    margin: 2em auto;
+    flex-direction: column;
+    justify-content: space-between;
+    align-items: center;
+    color: #0a0a0a;
+
+    max-width: var(--max-width);
+    padding: 1em;
+    background-color: rgb(235, 235, 235);
+}
+
+.content > h1 {
+    padding: 2rem;
+}
+
+.grid {
+    display: grid;
+    padding: 1rem;
+    grid-gap: 0.8rem;
+    grid-template-columns: repeat(5, minmax(calc(20% - 0.8rem), auto));
+}
+
+.grid a {
+    text-decoration: none;
+}
+
+.card {
+    padding: 1rem;
+    background: #ffffff;
+    transition: all 200ms;
+    height: 100%;
+}
+
+.card h1 {
+    font-size: 1.1rem;
+    font-weight: 600;
+    margin: 1rem 0;
+}
+
+.image {
+    position: relative;
+    object-fit: cover;
+    width: 100%;
+    aspect-ratio: 250/200;
+}
+
+/* Enable hover only on non-touch devices */
+@media (hover: hover) and (pointer: fine) {
+    .card:hover {
+        background: var(--light-mauve);
+        text-decoration: underline;
+        text-decoration-color: var(--mauve);
+        text-decoration-thickness: 1.5px;
+    }
+}
+
+/* Mobile */
+@media (max-width: 700px) {
+    .content {
+        margin: 0 rem;
+        padding: 0 rem;
+    }
+
+    .grid {
+        grid-template-columns: 1fr;
+        max-width: 100%;
+        text-align: center;
+        grid-gap: 2rem;
+    }
+
+    .card h1 {
+        font-size: 1.5rem;
+    }
+}
+
+/* Tablet and Smaller Desktop */
+@media (min-width: 701px) and (max-width: 1120px) {
+    .grid {
+        grid-template-columns: repeat(2, minmax(calc(50% - 0.8rem), auto));
+    }
+
+    .card h1 {
+        font-size: 1.3rem;
+    }
+}
