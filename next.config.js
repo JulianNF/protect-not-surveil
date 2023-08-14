@@ -8,7 +8,7 @@ module.exports = {
         remotePatterns: [
             {
                 protocol: 'https',
-                hostname: 'shoptoad.s1-tastewp.com',
+                hostname: 'teaseteeth.s4-tastewp.com',
                 port: '',
                 pathname: '/**',
             },

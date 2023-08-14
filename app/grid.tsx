@@ -15,8 +15,8 @@ interface wpPost {
 // TODO set this up as getStaticProps() "hook"
 async function getData() {
     const response = await fetch(
-        'https://shoptoad.s1-tastewp.com/wp-json/wp/v2/resources?_embed'
-        // 'https://shoptoad.s1-tastewp.com/wp-json/wp/v2/news?_embed'
+        'https://teaseteeth.s4-tastewp.com/wp-json/wp/v2/resources?_embed'
+        // 'https://teaseteeth.s4-tastewp.com/wp-json/wp/v2/news?_embed'
     );
 
     if (!response.ok) {
@@ -49,12 +49,13 @@ async function Grid() {
                         <div key={post.id}>
                             <a href={postUrl}>
                                 <div className={styles.card}>
-                                    <div className={styles.image}>
+                                    <div className={styles.imageholder}>
                                         <Image
                                             src={imgUrl}
                                             alt={imgAltText}
-                                            layout="fill"
-                                            priority
+                                            fill
+                                            sizes="100%"
+                                            className={styles.image}
                                         />
                                     </div>
                                     <h1>{post.title.rendered}</h1>

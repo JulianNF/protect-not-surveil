@@ -31,6 +31,8 @@
     background: #ffffff;
     transition: all 200ms;
     height: 100%;
+
+    position: relative;
 }
 
 .card h1 {
@@ -39,10 +41,14 @@
     margin: 1rem 0;
 }
 
-.image {
+.imageholder {
     position: relative;
-    object-fit: cover;
     width: 100%;
+    min-height: 150px;
+}
+
+.image {
+    object-fit: cover;
     aspect-ratio: 250/200;
 }
 
@@ -70,6 +76,10 @@
         grid-gap: 2rem;
     }
 
+    .imageholder {
+        min-height: 250px;
+    }
+
     .card h1 {
         font-size: 1.5rem;
     }
@@ -81,6 +91,9 @@
         grid-template-columns: repeat(2, minmax(calc(50% - 0.8rem), auto));
     }
 
+    .imageholder {
+        min-height: 300px;
+    }
     .card h1 {
         font-size: 1.3rem;
     }
