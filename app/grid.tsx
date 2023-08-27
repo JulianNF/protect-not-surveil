@@ -1,6 +1,8 @@
 import Image from 'next/image';
 import styles from './grid.module.css';
 
+import { ApolloClient, InMemoryCache, gql } from '@apollo/client';
+
 // TODO - create an interface for the JSON response
 interface wpPost {
     id: number;
@@ -15,7 +17,8 @@ interface wpPost {
 // TODO set this up as getStaticProps() "hook"
 async function getData() {
     const response = await fetch(
-        'https://teaseteeth.s4-tastewp.com/wp-json/wp/v2/resources?_embed'
+        'https://wordpress-1084996-3795066.cloudwaysapps.com//wp-json/wp/v2/resources?_embed'
+        // 'https://teaseteeth.s4-tastewp.com/wp-json/wp/v2/resources?_embed'
         // 'https://teaseteeth.s4-tastewp.com/wp-json/wp/v2/news?_embed'
     );
 
@@ -24,6 +27,41 @@ async function getData() {
     }
 
     return response.json();
+}
+
+export async function getStaticProps() {
+    const client = new ApolloClient({
+        uri: 'https://api.spacex.land/graphql/',
+        cache: new InMemoryCache(),
+    });
+    const { data } = await client.query({
+        query: gql`
+            query GetLaunches {
+                launchesPast(limit: 10) {
+                    id
+                    mission_name
+                    launch_date_local
+                    launch_site {
+                        site_name_long
+                    }
+                    links {
+                        article_link
+                        video_link
+                        mission_patch
+                    }
+                    rocket {
+                        rocket_name
+                    }
+                }
+            }
+        `,
+    });
+    console.log('launch data:', data);
+    return {
+        props: {
+            postsss: data.launchesPast,
+        },
+    };
 }
 
 // TODO - pass in props for data fetching and displaying in order to make this a completely reusable component
